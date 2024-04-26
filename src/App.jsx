@@ -4,7 +4,7 @@ import { useState } from 'react'
 function App() {
 
   function whatsapp(){
-    const url = "https://wa.me/+6281396716769?text=halo"
+    const url = "https://wa.me/6281396716769?text=halo"
     window.open(url, '_blank')
   }
 
