@@ -1,44 +1,51 @@
-name: Deploy to GitHub Pages
-permissions:
-  pages: write
+name: Deploy
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Debug Git configuration
-        run: git config --list --show-origin
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
 
       - name: Install dependencies
-        run: npm install
+        uses: bahmutov/npm-install@v1
 
-      - name: Install and Build  # This example project is built using npm and outputs the result to the 'dist' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        run: |
-          npm ci
-          npm run build
+      - name: Build project
+        run: npm run build
 
-      - name: Build and deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
         with:
-          branch: gh-pages
-          folder: dist
-          clean-exclude: |
-            special-file.txt
-            some/*.txt
-          clean: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: production-files
+          path: ./dist
 
-      # - name: Build and deploy
-      #   run: |
-      #     npm run build
-      #     git config --global user.name "github-actions"
-      #     git config --global user.email "github-actions@github.com"
-      #     git remote add origin https://github.com/${GITHUB_REPO}.git
-      #     git push --quiet --force origin main:gh-pages
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
