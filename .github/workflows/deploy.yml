@@ -11,18 +11,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true
 
       - name: Install dependencies
         run: npm install
 
       - name: Build and deploy
         # env:
-        #   VITE_SECRET_1: ${{ secrets.VITE_SECRET_1 }}
+          # VITE_SECRET_1: ${{ secrets.VITE_SECRET_1 }}
         #   VITE_SECRET_2: ${{ secrets.VITE_SECRET_2 }}
         #   VITE_SECRET_3: ${{ secrets.VITE_SECRET_3 }}
         run: |
           npm run build
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git remote add origin https://github.com/${GITHUB_REPO}.git
+          git remote add origin https://github.com/${funGame07/fungame07}.git
           git push --force origin main:gh-pages
