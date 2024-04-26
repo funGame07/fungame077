@@ -16,9 +16,6 @@ jobs:
       - name: Debug Git configuration
         run: git config --list --show-origin
 
-      - name: Debug Git credentials
-        run: cat ~/.git-credentials
-        
       - name: Install dependencies
         run: npm install
 
