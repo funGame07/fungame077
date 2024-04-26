@@ -29,6 +29,7 @@ jobs:
             special-file.txt
             some/*.txt
           clean: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Build and deploy
       #   run: |
