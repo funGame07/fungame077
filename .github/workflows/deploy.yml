@@ -30,14 +30,10 @@ jobs:
             some/*.txt
           clean: true
 
-      - name: Build and deploy
-        # env:
-          # VITE_SECRET_1: ${{ secrets.VITE_SECRET_1 }}
-        #   VITE_SECRET_2: ${{ secrets.VITE_SECRET_2 }}
-        #   VITE_SECRET_3: ${{ secrets.VITE_SECRET_3 }}
-        run: |
-          npm run build
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git remote add origin https://github.com/${GITHUB_REPO}.git
-          git push --quiet --force origin main:gh-pages
+      # - name: Build and deploy
+      #   run: |
+      #     npm run build
+      #     git config --global user.name "github-actions"
+      #     git config --global user.email "github-actions@github.com"
+      #     git remote add origin https://github.com/${GITHUB_REPO}.git
+      #     git push --quiet --force origin main:gh-pages
