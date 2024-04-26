@@ -20,7 +20,7 @@ jobs:
           npm ci
           npm run build
 
-      - name: Build and deploy
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
@@ -30,11 +30,3 @@ jobs:
             some/*.txt
           clean: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Build and deploy
-      #   run: |
-      #     npm run build
-      #     git config --global user.name "github-actions"
-      #     git config --global user.email "github-actions@github.com"
-      #     git remote add origin https://github.com/${GITHUB_REPO}.git
-      #     git push --quiet --force origin main:gh-pages
