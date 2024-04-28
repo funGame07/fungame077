@@ -19,6 +19,7 @@ function QuestionForm(){
             <QuestionBox type='radio' name="seventh" title='Bagaimana tingkat kepuasan anda dalam kurikulum merdeka?'/>
             <QuestionBox type='radio' name="eighth" title='Bagaimana fleksibilitas yang diberikan oleh kurikulum merdeka dalam pembelajran?'/>
             <QuestionBox type='radio' name="ninth" title='Bagaimana tingkat keaktifan siswa dalam kurikulum merdeka?'/>
+            <QuestionBox type='text' placeholder="Pendapat anda" name="pendapat" title='Bagaimana pendapat anda dalam kurikulum merdeka?'/>
             <Submit />
         </form>
     )

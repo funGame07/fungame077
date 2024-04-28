@@ -1,10 +1,12 @@
 import Footer from "../element/Footer"
 import QuestionForm from "../fragment/QuestionForm"
 import Nav from "../element/Nav"
+import Info from "../element/Info"
 
 function QuestionLayout(){
     return(
-    <div className='flex flex-col max-w-[420px] border-s border-e border-slate-700 rounded-lg'>
+    <div className='flex flex-col max-w-[420px] border-s border-e border-slate-700 rounded-lg relative'>
+         <Info />
         <Nav />
         <main className='h-fit px-4 py-4 pt-8 bg-slate-100'>
         <div className='flex justify-center'>
