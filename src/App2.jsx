@@ -5,7 +5,8 @@ function App2() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/react-tw' element={<Question/>}/>
+                <Route path='/' element={<Question/>}/>
+                <Route path='/react-tw/done'></Route>
             </Routes>
         </BrowserRouter>
     )
