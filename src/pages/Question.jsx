@@ -28,9 +28,7 @@ function Question(){
 
     function SubmitFunc(e){
         e.preventDefault()
-        alert('thanks')
-        location.assign('/react-tw/done')
-        
+        alert('Terima Kasih Telah Mengisi 😙')
     }
 
     const toSend = {
